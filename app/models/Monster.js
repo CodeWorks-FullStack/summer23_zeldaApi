@@ -1,5 +1,6 @@
 export class Monster {
   constructor (data) {
+    // NOTE if your data is being sent back with some null values, make sure to use an "or" operator ||
     this.commonLocations = data.common_locations || []
     this.description = data.description
     this.drops = data.drops || []
@@ -35,14 +36,17 @@ export class Monster {
     this.commonLocations.forEach(l => template += `<li>${l}</li>`)
     return template
   }
+
   get ComputeDropList() {
     let template = ''
     this.drops.forEach(d => template += `<li>${d}</li>`)
     return template
   }
-
 }
+
 // NOTE makes building our class easier by having a reference to what data looks like
+// NOTE this was copy and pasted from our console after making the get request to the API
+
 // const monsterData = {
 //   "category": "monsters",
 //   "common_locations": [

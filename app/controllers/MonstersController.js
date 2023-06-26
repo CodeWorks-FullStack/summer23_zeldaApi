@@ -21,6 +21,8 @@ export class MonstersController {
     // this.testTryCatch('Jerms')
     this.getMonsters()
 
+    // NOTE we can't run the draw on page load because there is no data in our AppState until our request to the api is done
+    // _drawMonsters()
 
     AppState.on('monsters', _drawMonsters)
   }
@@ -39,7 +41,10 @@ export class MonstersController {
 
 
   async getMonsters() {
+
+    // NOTE try/catch will TRY to run all of the code inside our try block, and if an error is THROWN, we capture that error, stop running the code inside of the try, and run the code inside of the catch instead
     try {
+      // NOTE we await here as well so that our Controller waits for the code to run inside of getMonsters from the monstersService before popping our success, and if an error is thrown inside of the service, it still triggers our catch
       await monstersService.getMonsters()
       Pop.success('We got the monsters!')
     } catch (error) {
