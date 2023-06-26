@@ -26,6 +26,7 @@ class MonstersService {
     console.log('our array of monsters', response.data.data);
 
     // NOTE map will turn our array of pojos into an array or our monster class model
+    // REVIEW https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
     const arrayOfMonsters = response.data.data.map(monsterPojo => new Monster(monsterPojo))
 
     console.log(arrayOfMonsters);
